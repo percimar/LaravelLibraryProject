@@ -1,4 +1,4 @@
-[Trello Board](https://trello.com/b/to4MHQjk/cp3445-laravel-library-project)
+[Trello Board](https://trello.com/b/to4MHQjk/cp3445-laravel-library-project) - [Invite Link, use to join as board member](https://trello.com/invite/b/to4MHQjk/dd705d406856e19a2e26f27816f7d9da/cp3445-laravel-library-project)
 
 ## Installation
 
@@ -14,16 +14,16 @@ Then install vendor modules
 composer install
 ```
 
-Now you can run it
-
-```
-php artisan server
-```
-
 Remember to configure your MySQL Connection in the .env file, then run migrations
 
 ```
 php artisan migrate:fresh
+```
+
+Now you can run it
+
+```
+php artisan server
 ```
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
