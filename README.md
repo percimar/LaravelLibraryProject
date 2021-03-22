@@ -1,3 +1,25 @@
+[Trello Board](https://trello.com/b/to4MHQjk/cp3445-laravel-library-project)
+
+## Installation
+
+First, make a local copy of the repo
+
+```
+git checkout https://github.com/percimar/LaravelLibraryProject.git
+```
+
+Then install vendor modules
+
+```
+composer install
+```
+
+Now you can run it
+
+```
+php artisan server
+```
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
