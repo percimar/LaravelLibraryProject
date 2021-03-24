@@ -23,7 +23,7 @@ php artisan migrate:fresh
 Now you can run it
 
 ```
-php artisan server
+php artisan serve
 ```
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
