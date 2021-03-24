@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<table class="table">
-<thead>
+<div class="col-lg-8 m-auto">
+    <h1>User Messages</h1>
+    <br />
+<table class="table ">
+<thead class="thead-dark">
     <tr>
       <th scope="col">Username</th>
       <th scope="col">Subject</th>
@@ -21,4 +24,5 @@
       <td>{{$contact->message}}</td>
     </tr>
     @endforeach
+    </div>
 @endsection
