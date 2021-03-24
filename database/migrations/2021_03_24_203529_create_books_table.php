@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Database\Factories\BookFactory;
+use App\Models\Book;
 
 class CreateBooksTable extends Migration
 {
@@ -16,11 +18,14 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->text("title");
-            $table->integer("isbn", false, false);
+            $table->unsignedBigInteger("isbn", false);
             $table->text("author");
             $table->text("category");
             $table->integer("pages", false, false);
+            $table->date("publication");
         });
+        $books = new BookFactory;
+        $books->count(10)->create();
     }
 
     /**
