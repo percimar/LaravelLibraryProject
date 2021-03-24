@@ -19,6 +19,11 @@ Remember to configure your MySQL Connection in the .env file, then run migration
 ```
 php artisan migrate:fresh
 ```
+generate app key before you serve
+
+```
+php artisan key:generate
+```
 
 Now you can run it
 
