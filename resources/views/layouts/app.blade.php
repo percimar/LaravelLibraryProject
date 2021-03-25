@@ -34,7 +34,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @guest
+                        @else
+                            @if(Auth::user()->role === 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('contacts.index') }}">Messages</a>
+                            </li>
+                            @endif
+                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->

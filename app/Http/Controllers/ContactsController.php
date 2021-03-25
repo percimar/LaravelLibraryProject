@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class ContactsController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     /**
@@ -20,13 +21,16 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        $contacts=Contact::get();
-        $users=User::get();
-
-        return view('messages',[
-            'contacts'=>$contacts,
-            'users'=>$users
+        $contacts = Contact::get();
+        $users = User::get();
+        $user = Auth::user();
+        if ($user->role === "admin")
+            return view('messages', [
+                'contacts' => $contacts,
+                'users' => $users
             ]);
+        else
+            return redirect('home');
     }
 
     /**
@@ -50,9 +54,9 @@ class ContactsController extends Controller
         request()->validate([
             'subject' => 'required',
             'message' => 'required',
-            ]);
+        ]);
 
-        $contact =new Contact();
+        $contact = new Contact();
         $contact->user_id = Auth::user()->id;
         $contact->subject = request('subject');
         $contact->message = request('message');
