@@ -38,12 +38,15 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @guest
+                        <a class="dropdown-item" href="{{ route('contacts.create') }}">
+                            Contact
+                        </a>
                         @else
-                            @if(Auth::user()->role === 'admin')
+                    
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('contacts.index') }}">Messages</a>
                             </li>
-                            @endif
+                       
                         @endguest
                     </ul>
 
@@ -73,11 +76,10 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('contacts.create') }}">
-                                        Contact
-                                    </a>
                                 </a>
-
+                                <a class="dropdown-item" href="{{ route('contacts.create') }}">
+                                    Contact
+                                </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

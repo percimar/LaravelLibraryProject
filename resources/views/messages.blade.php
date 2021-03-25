@@ -14,15 +14,22 @@
         </thead>
         <tbody>
             @foreach($contacts as $contact)
-            <tr>
-                @foreach($users as $user)
-                @if($user->id == $contact->user_id)
-                <td>{{$user->name}}</td>
+                @if($user->role == 'admin')
+                    <tr>     
+                        <td>{{$contact->email}}</td>         
+                        <td>{{$contact->subject}}</td>
+                        <td>{{$contact->message}}</td>
+                    </tr>
                 @endif
-                @endforeach
-                <td>{{$contact->subject}}</td>
-                <td>{{$contact->message}}</td>
-            </tr>
+                @if($user->role == 'member') 
+                    @if($user->email == $contact->email)
+                        <tr>
+                                <td>{{$contact->email}}</td> 
+                                <td>{{$contact->subject}}</td>
+                                <td>{{$contact->message}}</td>
+                        </tr>
+                    @endif   
+                @endif
             @endforeach
         </tbody>
     </table>
