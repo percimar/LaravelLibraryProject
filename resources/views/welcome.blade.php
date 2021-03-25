@@ -8,22 +8,39 @@
   <div class="item2">
     Categories
     <div>
-      Cat 1
+      <a href="#">
+        Cat 1
+      </a><br />
+      <a href="#">
+        Cat 2
+      </a>
     </div>
-    <div>
-      Cat 2
-    </div>
+
   </div>
   <div class="item3">
-  Popular Books
-  
+    Popular Books
+
   </div>
-  <div class="item2">Categories</div>
+
   <div class="item3">
-  <input id="searchBooks" placeholder="Search our books" />
-  <div id="loadBooks"><div>
-  </div>  
-  <!-- <div class="item4">Right</div> -->
-  <!-- <div class="item5">Footer</div> -->
-</div>
-@endsection
+    <input id="searchBooks" placeholder="Search our books" />
+    <div id="loadBooks">
+      <div>
+      </div>
+      <div class="grid-container-books">
+
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+      </div>
+
+      <!-- <div class="item4">Right</div> -->
+      <!-- <div class="item5">Footer</div> -->
+    </div>
+    @endsection

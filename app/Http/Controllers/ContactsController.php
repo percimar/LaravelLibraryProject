@@ -30,7 +30,7 @@ class ContactsController extends Controller
                 'users' => $users
             ]);
         else
-            return redirect('home');
+            return redirect('/');
     }
 
     /**

@@ -39,11 +39,11 @@
                     <ul class="navbar-nav mr-auto">
                         @guest
                         @else
-                            @if(Auth::user()->role === 'admin')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('contacts.index') }}">Messages</a>
-                            </li>
-                            @endif
+                        @if(Auth::user()->role === 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contacts.index') }}">Messages</a>
+                        </li>
+                        @endif
                         @endguest
                     </ul>
 
@@ -71,11 +71,17 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('contacts.create') }}">
-                                        Contact
-                                    </a>
+                                    {{ __('Logout') }}
+                                </a>
+                                @guest
+                                @else
+                                @if(Auth::user()->role != 'admin')
+                                <a class="dropdown-item" href="{{ route('contacts.create') }}">
+                                    Contact
+                                </a>
+                                @endif
+                                @endguest
+
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
