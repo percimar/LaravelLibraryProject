@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ContactsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -24,13 +24,16 @@ class ContactsController extends Controller
         $contacts = Contact::get();
         $users = User::get();
         $user = Auth::user();
-        if ($user->role === "admin")
+        
+        if ($user === null)
+            return redirect('home');
+
+        else if ($user->role === "admin" || $user->role === "member")
             return view('messages', [
                 'contacts' => $contacts,
-                'users' => $users
+                'users' => $users,
+                'user' => $user
             ]);
-        else
-            return redirect('home');
     }
 
     /**
@@ -52,12 +55,13 @@ class ContactsController extends Controller
     public function store(Request $request)
     {
         request()->validate([
+            'email' => 'required',
             'subject' => 'required',
             'message' => 'required',
         ]);
 
         $contact = new Contact();
-        $contact->user_id = Auth::user()->id;
+        $contact->email = request('email');
         $contact->subject = request('subject');
         $contact->message = request('message');
         $contact->save();
