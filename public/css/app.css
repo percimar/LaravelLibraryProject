@@ -1,5 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(//db.onlinewebfonts.com/c/86aec59525d1d04b53f54ad95ff3f6bf?family=Hold);
+
 @charset "UTF-8";
+
+@font-face {
+  font-family: "Hold"; 
+  src: url("//db.onlinewebfonts.com/t/86aec59525d1d04b53f54ad95ff3f6bf.eot"); 
+  src: url("//db.onlinewebfonts.com/t/86aec59525d1d04b53f54ad95ff3f6bf.eot?#iefix") format("embedded-opentype"), 
+  url("//db.onlinewebfonts.com/t/86aec59525d1d04b53f54ad95ff3f6bf.woff2") format("woff2"), 
+  url("//db.onlinewebfonts.com/t/86aec59525d1d04b53f54ad95ff3f6bf.woff") format("woff"), 
+  url("//db.onlinewebfonts.com/t/86aec59525d1d04b53f54ad95ff3f6bf.ttf") format("truetype"), 
+  url("//db.onlinewebfonts.com/t/86aec59525d1d04b53f54ad95ff3f6bf.svg#Hold") format("svg"); 
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -56,13 +69,13 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Hold";
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #c5ae8a;
+  background: linear-gradient(180deg, rgba(252,238,186,1) 0%, rgba(91,56,0,1) 100%);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -6181,7 +6194,7 @@ button.bg-dark:focus {
 }
 
 .bg-white {
-  background-color: #fff !important;
+  /* background-color: #fff !important; */
 }
 
 .bg-transparent {
