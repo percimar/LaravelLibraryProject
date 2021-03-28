@@ -41,13 +41,16 @@
                         <a class="dropdown-item" href="{{ route('contacts.create') }}">
                             Contact
                         </a>
-                        @else
-
+                        @endguest
+                        @role('admin')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contacts.index') }}">Messages</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('books.create') }}">Add Books</a>
+                        </li>
+                        @endrole
 
-                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
