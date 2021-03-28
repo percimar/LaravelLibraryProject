@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
+
 class BooksController extends Controller
 {
     /**
@@ -15,7 +18,12 @@ class BooksController extends Controller
     public function index()
     {
         $books = Book::all();
+        // $disbooks = Book::get();
         return $books;
+        // return view('welcome', [
+        //     'books' => $books,
+        //     'disbooks' => $disbooks
+        // ]);
     }
 
     /**
@@ -25,7 +33,26 @@ class BooksController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+
+        if($user === null) {
+            return redirect(route('login'));
+        }
+
+        if($user->role !== "admin") {
+            return abort(403);
+        }
+
+        $categories = [
+            'Fantasy',
+            'Historical Fiction',
+            'Autobiography',
+            'Horror',
+            'Detective Mystery',
+            'Romance',
+            'Thrillers'
+        ];
+        return view("bookForm", ['categories' => $categories]);
     }
 
     /**
@@ -36,7 +63,28 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        if($user === null) {
+            return redirect(route('login'));
+        }
+
+        if($user->role !== "admin") {
+            return abort(403);
+        }
+        
+        request()->validate([
+            'title' => 'required',
+            'isbn' => 'required',
+            'author' => 'required',
+            'category' => 'required',
+            'pages' => 'required',
+            'publication' => 'required',
+        ]);
+
+        $book = Book::create($request->all());
+        $book->save();
+        return $book;
     }
 
     /**
