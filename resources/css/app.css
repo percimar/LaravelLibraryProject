@@ -1,8 +1,107 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 @import url(//db.onlinewebfonts.com/c/86aec59525d1d04b53f54ad95ff3f6bf?family=Hold);
+.item1 {
+    grid-area: header;
+}
+
+.item2 {
+    grid-area: menu;
+}
+
+.item3 {
+    grid-area: main;
+}
+
+.item4 {
+    grid-area: right;
+}
+
+.item5 {
+    grid-area: footer;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header header header header header header"
+        "menu main main main main main"
+        "menu footer footer footer footer footer";
+    grid-gap: 10px;
+    /* background-color: #2196F3; */
+    padding: 10px;
+}
+.grid-container-books {
+    display: grid;
+    grid-template-areas: "header header header header header header" "menu main main main right right" "menu footer footer footer footer footer";
+    /* grid-gap: 1px; */
+    /* background-color: #2196F3; */
+    padding: 5px;
+}
+
+.grid-container > div {
+    background-color: #0000001c;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 18px;
+    border-radius: 15px;
+}
+.footer {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    font-size: 12px;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.lead {
+    color: rgba(151, 151, 151, 5);
+    font-size: 12px;
+}
+
+.searchInput {
+    color: rgb(0, 0, 0);
+    border-radius: 0.25rem;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0 0 0;
+    /* border-color: rgb(88, 88, 88); */
+    text-align: center;
+}
+
+.searchInput:focus {
+    color: rgb(0, 0, 0);
+    border-radius: 0.25rem;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0 0 0;
+    border-color: rgb(255, 0, 0);
+    text-align: center;
+}
+input {
+    background-color: rgba(0, 0, 0, 0);
+}
+::-webkit-input-placeholder {
+    color: rgb(78, 55, 34);
+}
 
 @charset "UTF-8";
-
 @font-face {
     font-family: "Hold";
     src: url("//db.onlinewebfonts.com/t/86aec59525d1d04b53f54ad95ff3f6bf.eot");
@@ -18,12 +117,6 @@
             format("svg");
 }
 
-/*!
- * Bootstrap v4.6.0 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
 :root {
     --blue: #3490dc;
     --indigo: #6574cd;
@@ -193,7 +286,7 @@ sup {
 }
 
 a {
-    color: #869723;
+    color: #573617;
     background-color: transparent;
 }
 a:hover {
@@ -2001,8 +2094,8 @@ pre code {
 }
 
 .table .thead-dark th {
-    color: #fff;
-    background-color: #343a40;
+    color: rgb(0, 0, 0);
+    /* background-color: #343a40; */
     border-color: #454d55;
 }
 .table .thead-light th {
@@ -2134,7 +2227,7 @@ pre code {
 }
 .form-control:disabled,
 .form-control[readonly] {
-    background-color: #e9ecef;
+    background-color: transparent;
     opacity: 1;
 }
 
@@ -2149,7 +2242,7 @@ input[type="month"].form-control {
 
 select.form-control:focus::-ms-value {
     color: #495057;
-    background-color: #fff;
+    background-color: transparent;
 }
 
 .form-control-file,
@@ -4347,8 +4440,10 @@ input[type="button"].btn-block {
     padding-left: 0;
 }
 .navbar-nav .dropdown-menu {
+    background-color: rgba(116, 56, 22, 0.43);
     position: static;
     float: none;
+    border-radius: 15px;
 }
 
 .navbar-text {
@@ -10442,3 +10537,5 @@ a.text-dark:focus {
         border-color: #dee2e6;
     }
 }
+
+
