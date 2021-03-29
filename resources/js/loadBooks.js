@@ -27,13 +27,5 @@
             })
         }
     }
-    // books.mpa
-    // $('loadBooks').append(`
-    //     <div class="card" >
-    //         ${}
-    //     </div>
-    
-    //     `)
-
 })()
 

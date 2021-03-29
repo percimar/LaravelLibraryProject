@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <!-- {{ config('app.name', 'Laravel') }} -->
+                    <!-- {{ config('app.name', 'La Biblioteca') }} -->
                     <img src="{{ asset('img/labiblio-logo.png') }}" height="50" width="30" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -82,6 +82,9 @@
                                 </a>
                                 <a class="dropdown-item" href="{{ route('contacts.create') }}">
                                     Contact
+                                </a>
+                                <a class="dropdown-item" href="{{ route('reservations.index') }}">
+                                    Reservations
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
