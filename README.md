@@ -1,4 +1,6 @@
-[Trello Board](https://trello.com/b/to4MHQjk/cp3445-laravel-library-project) - [Invite Link, use to join as board member](https://trello.com/invite/b/to4MHQjk/dd705d406856e19a2e26f27816f7d9da/cp3445-laravel-library-project)
+# THIS IS GROUP 2 - OMAR AND THE 3 IDIOTS
+
+[Trello Board](https://trello.com/b/to4MHQjk/cp3445-laravel-library-project)
 
 ## Installation
 
