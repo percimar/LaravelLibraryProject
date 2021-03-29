@@ -55,7 +55,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">Manage Users</a>
-                        </li>           
+                        </li>
                         @endrole
                     </ul>
 
@@ -81,17 +81,18 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+
+                                <a class="dropdown-item" href="{{ route('reservations.index') }}">
+                                    Reservations
                                 </a>
                                 <a class="dropdown-item" href="{{ route('contacts.create') }}">
                                     Contact
                                 </a>
-                                <a class="dropdown-item" href="{{ route('reservations.index') }}">
-                                    Reservations
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

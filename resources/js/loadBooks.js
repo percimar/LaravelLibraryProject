@@ -2,7 +2,7 @@
     if (window.location.pathname === "/") {
         let searchField = document.getElementById('searchBooks')
         let listener = searchField.addEventListener('keydown', send)
-
+        
         async function send(event) {
 
             let books = await $.get('/books', {
@@ -21,9 +21,9 @@
                     loadDiv.append(
                         `
                         <div class="grid-item">
-                            ${book.title}
-                            ${book.author}
-                            ${book.category}
+                            ${book.title}<br/>
+                            ${book.author}<br/>
+                            ${book.category}<br/>
                             ${book.publication}
                         </div>
                         `
@@ -31,6 +31,7 @@
                 }
             })
         }
+        await send({target: {value:""}})
     }
 })()
 

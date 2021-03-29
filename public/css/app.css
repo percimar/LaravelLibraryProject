@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 @import url(//db.onlinewebfonts.com/c/86aec59525d1d04b53f54ad95ff3f6bf?family=Hold);
 .item1 {
     grid-area: header;
@@ -101,7 +103,6 @@ input {
 }
 
 @charset "UTF-8";
-
 @font-face {
     font-family: "Hold";
     src: url("//db.onlinewebfonts.com/t/86aec59525d1d04b53f54ad95ff3f6bf.eot");
@@ -117,12 +118,6 @@ input {
             format("svg");
 }
 
-/*!
- * Bootstrap v4.6.0 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
 :root {
     --blue: #3490dc;
     --indigo: #6574cd;
@@ -292,7 +287,7 @@ sup {
 }
 
 a {
-    color: #869723;
+    color: #573617;
     background-color: transparent;
 }
 a:hover {
@@ -2100,8 +2095,8 @@ pre code {
 }
 
 .table .thead-dark th {
-    color: #fff;
-    background-color: #343a40;
+    color: rgb(0, 0, 0);
+    /* background-color: #343a40; */
     border-color: #454d55;
 }
 .table .thead-light th {
@@ -2233,7 +2228,7 @@ pre code {
 }
 .form-control:disabled,
 .form-control[readonly] {
-    background-color: #e9ecef;
+    background-color: transparent;
     opacity: 1;
 }
 
@@ -2248,7 +2243,7 @@ input[type="month"].form-control {
 
 select.form-control:focus::-ms-value {
     color: #495057;
-    background-color: #fff;
+    background-color: transparent;
 }
 
 .form-control-file,
@@ -4446,8 +4441,10 @@ input[type="button"].btn-block {
     padding-left: 0;
 }
 .navbar-nav .dropdown-menu {
+    background-color: rgba(116, 56, 22, 0.43);
     position: static;
     float: none;
+    border-radius: 15px;
 }
 
 .navbar-text {
@@ -10541,5 +10538,7 @@ a.text-dark:focus {
         border-color: #dee2e6;
     }
 }
+
+
 
 
