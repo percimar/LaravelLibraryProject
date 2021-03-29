@@ -28,6 +28,7 @@
             <div class="container">
 
                 <a class="navbar-brand" href="{{ url('/') }}">
+                    <!-- {{ config('app.name', 'La Biblioteca') }} -->
                     <img src="{{ asset('img/labiblio-logo.png') }}" height="50" width="30" />
                 </a>
 
@@ -52,6 +53,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('books.create') }}">Add Books</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('users.index') }}">Manage Users</a>
+                        </li>           
                         @endrole
                     </ul>
 
@@ -84,6 +88,9 @@
                                 </a>
                                 <a class="dropdown-item" href="{{ route('contacts.create') }}">
                                     Contact
+                                </a>
+                                <a class="dropdown-item" href="{{ route('reservations.index') }}">
+                                    Reservations
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
