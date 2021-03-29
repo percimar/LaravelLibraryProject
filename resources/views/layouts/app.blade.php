@@ -54,6 +54,9 @@
                             <a class="nav-link" href="{{ route('books.create') }}">Add Books</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('reservations.index') }}">Manage Reservations</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">Manage Users</a>
                         </li>
                         @endrole

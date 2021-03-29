@@ -19,4 +19,4 @@ Route::resource('reservations',ReservationsController::class);
 Route::resource('users',UserController::class);
 
 Route::get('/books/{book}/reserve', [ReservationsController::class, 'reserve'])->name('reserve');
-Route::get('/books/{book}/borrow', [ReservationsController::class, 'borrow'])->name('borrow');
+Route::get('/reservations/{reservation}/borrow', [ReservationsController::class, 'borrow'])->name('borrow');
