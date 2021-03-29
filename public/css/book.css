@@ -20,7 +20,10 @@
 
 .grid-container {
     display: grid;
-    grid-template-areas: "header header header header header header" "menu main main main right right" "menu footer footer footer footer footer";
+    grid-template-areas:
+        "header header header header header header"
+        "menu main main main main main"
+        "menu footer footer footer footer footer";
     grid-gap: 10px;
     /* background-color: #2196F3; */
     padding: 10px;
@@ -40,12 +43,18 @@
     font-size: 18px;
     border-radius: 15px;
 }
+.footer {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 10px;
-    font-size: 18px;
+    font-size: 12px;
     text-align: center;
     width: 150px;
     height: 150px;
@@ -64,3 +73,26 @@
     font-size: 12px;
 }
 
+.searchInput {
+    color: rgb(0, 0, 0);
+    border-radius: 0.25rem;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0 0 0;
+    /* border-color: rgb(88, 88, 88); */
+    text-align: center;
+}
+
+.searchInput:focus {
+    color: rgb(0, 0, 0);
+    border-radius: 0.25rem;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0 0 0;
+    border-color: rgb(255, 0, 0);
+    text-align: center;
+}
+input {
+    background-color: rgba(0, 0, 0, 0);
+}
+::-webkit-input-placeholder {
+    color: rgb(78, 55, 34);
+}

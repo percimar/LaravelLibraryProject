@@ -22,15 +22,12 @@
                         `
                         <div class="grid-item">
                             ${book.title}
+                            ${book.author}
+                            ${book.category}
+                            ${book.publication}
                         </div>
                         `
                     )
-                } else {
-                        `
-                        <div class="grid-item">
-                            ${book.title}
-                        </div>
-                        `
                 }
             })
         }
