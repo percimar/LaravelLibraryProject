@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class BooksController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -95,7 +96,7 @@ class BooksController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        dd($book);
     }
 
     /**

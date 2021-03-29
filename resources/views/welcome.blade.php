@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<img class="center" src="{{ asset('img/labiblio-banner.png') }}" />
+<img class="center" src="{{ asset('img/labiblio-banner.png') }}"  width="200px" />
 
 <div class="grid-container">
   <!-- <div class="item1">Header</div> -->
@@ -18,29 +18,12 @@
 
   </div>
   <div class="item3">
-    Popular Books
+    <input class="searchInput" id="searchBooks" placeholder="Type to Search..." />
 
-  </div>
-
-  <div class="item3">
-    <input id="searchBooks" placeholder="Search our books" />
-    <div id="loadBooks">
-      <div>
-      </div>
-      <div class="grid-container-books">
-
-        <div class="grid-item">1</div>
-        <div class="grid-item">2</div>
-        <div class="grid-item">3</div>
-        <div class="grid-item">4</div>
-        <div class="grid-item">5</div>
-        <div class="grid-item">6</div>
-        <div class="grid-item">7</div>
-        <div class="grid-item">8</div>
-        <div class="grid-item">9</div>
-      </div>
-
-      <!-- <div class="item4">Right</div> -->
-      <!-- <div class="item5">Footer</div> -->
+    <div id="loadBooks" class="grid-container-books">
     </div>
-    @endsection
+
+    <!-- <div class="item4">Right</div> -->
+    <!-- <div class="item5">Footer</div> -->
+  </div>
+  @endsection

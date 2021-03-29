@@ -16,25 +16,29 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link href="//db.onlinewebfonts.com/c/86aec59525d1d04b53f54ad95ff3f6bf?family=Hold" rel="stylesheet" type="text/css" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/book.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/book.css') }}" rel="stylesheet"> -->
 </head>
 
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <!-- {{ config('app.name', 'Laravel') }} -->
+                    <!-- {{ config('app.name', 'La Biblioteca') }} -->
                     <img src="{{ asset('img/labiblio-logo.png') }}" height="50" width="30" />
                 </a>
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @guest
@@ -51,9 +55,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">Manage Users</a>
-                        </li>           
+                        </li>
                         @endrole
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -78,14 +81,18 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+
+                                <a class="dropdown-item" href="{{ route('reservations.index') }}">
+                                    Reservations
                                 </a>
                                 <a class="dropdown-item" href="{{ route('contacts.create') }}">
                                     Contact
                                 </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -103,6 +110,8 @@
             @yield('content')
         </main>
     </div>
+    @include('layouts.footer')
+
     @yield('scripts')
 </body>
 

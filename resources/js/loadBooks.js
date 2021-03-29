@@ -1,20 +1,37 @@
-(async()=>{
+(async () => {
     if (window.location.pathname === "/") {
-        let books = await $.get('/books',{
-            data: {
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            }
-        })
-    }
-    // books.mpa
-    // $('loadBooks').append(`
-    //     <div class="card" >
-    //         ${}
-    //     </div>
-    
-    //     `)
+        let searchField = document.getElementById('searchBooks')
+        let listener = searchField.addEventListener('keydown', send)
+        
+        async function send(event) {
 
+            let books = await $.get('/books', {
+                data: {
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                }
+            })
+
+            let loadDiv = $('#loadBooks')
+            loadDiv.text('')
+            books.map(book => {
+                if (book.title.indexOf(event.target.value) !== -1) {
+                    // Book CSS under append
+                    loadDiv.append(
+                        `
+                        <div class="grid-item">
+                            ${book.title}<br/>
+                            ${book.author}<br/>
+                            ${book.category}<br/>
+                            ${book.publication}
+                        </div>
+                        `
+                    )
+                }
+            })
+        }
+        await send({target: {value:""}})
+    }
 })()
 
