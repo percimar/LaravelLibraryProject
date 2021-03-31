@@ -5,6 +5,12 @@
         <div class="row">
             <div class="col-lg-6 ml-auto">
                 <h1 class="text-left">Your reservations</h1>
+                @if(null !== session('alert'))
+                <br />
+                <div class="alert alert-danger" role="alert">
+                    {{session('alert') ?? '' }}
+                </div>
+                @endif
                 @foreach ($reservations as $reservation)
                     <div class="card flex-column" style="width: 18rem;">
                         <div class="card-body">
