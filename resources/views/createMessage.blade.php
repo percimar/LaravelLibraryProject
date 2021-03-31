@@ -7,7 +7,12 @@
     <form class="col-lg-8" method="POST" action="{{route('contacts.store')}}">
         @csrf
         <div class="form-group">
-            <input type="text" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email" value="{{old('email')}}">
+            @if($user)
+                <p type="text" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email" >{{$user->email}}</p>
+                <input type="hidden" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email" value="{{$user->email}}" >
+            @else
+                <input type="text" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email" value="{{old('email')}}">
+            @endif
             @error('email')
             <p class="alert text-danger">You must enter a email</p>
             @enderror

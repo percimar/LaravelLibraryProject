@@ -60,6 +60,11 @@
                             <a class="nav-link" href="{{ route('users.index') }}">Manage Users</a>
                         </li>
                         @endrole
+                        @role('member')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contacts.index') }}">Messages</a>
+                        </li>
+                        @endrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->

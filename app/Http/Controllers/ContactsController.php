@@ -43,7 +43,10 @@ class ContactsController extends Controller
      */
     public function create()
     {
-        return view('createMessage');
+        $user = Auth::user();
+        return view('createMessage', [
+            'user' => $user
+        ]);
     }
 
     /**
