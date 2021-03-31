@@ -85,7 +85,7 @@ class BooksController extends Controller
 
         $book = Book::create($request->all());
         $book->save();
-        return $book;
+        return redirect(route('/'));
     }
 
     /**

@@ -29,7 +29,7 @@
                         <td>{{$r->user->name}}</td>
                         <td>{{$r->user->email}}</td>
                         <td>{{$r->reserve_date}}</td>
-                        <td><a class="btn btn-primary" href={{ route('borrow', $r->id) }}>Borrow</a></td>
+                        <td><a class="btn btn-primary" href={{ route('borrow', $r->id) }}>Check Out</a></td>
                 </tr>
             @endforeach
         </tbody>
