@@ -25,7 +25,7 @@ class ReservationsController extends Controller
                 //Is the book already reserved?
                 $reservations = DB::Table('reservations')->
                                 where('book_id',"=",$book->id)->
-                                where('status', '=', 'reserved')->
+                                whereIn('status', ['reserved','borrowed'])->
                                 get();
                 if(count($reservations) === 0)
                 {
@@ -41,7 +41,7 @@ class ReservationsController extends Controller
                 }
                 else
                 {
-                    return redirect('/');
+                    return redirect(route('reservations.index'))->with('alert', 'Error: Book is currently reserved or borrowed!');
                 }
             }
             else
@@ -64,7 +64,6 @@ class ReservationsController extends Controller
         }
 
         if ($reservation->exists) {
-            $today = today();
             $book = $reservation->book;
             $user = $reservation->user;
 
@@ -77,13 +76,44 @@ class ReservationsController extends Controller
             if(count($isBorrowed) === 0)
             {
                 $reservation->status = "borrowed";
-                $reservation->return_date = $today->add(14, 'day');
+                $reservation->reserve_date = today();
+                $reservation->return_date = today()->add(14, 'day');
                 $reservation->save();
                 return redirect(route('reservations.index'));
             }
             else
             {
-                return abort(400);
+                return abort(400, "Illegal reservation, already reserved/borrowed");
+            }
+        }
+        else
+        {
+            return abort(404);
+        }
+    }
+
+    public function return(Reservation $reservation) {
+        //is user authenticated?
+        $authUser = Auth::user();
+
+        if($authUser === null) {
+            return redirect(route('login'));
+        }
+
+        if ($reservation->exists) {
+            $book = $reservation->book;
+            $user = $reservation->user;
+            
+            if($reservation->status === "borrowed")
+            {
+                $reservation->status = "returned";
+                $reservation->return_date = today();
+                $reservation->save();
+                return redirect(route('userBorrowed'));
+            }
+            else
+            {
+                return redirect(route('userBorrowed'))->with('alert', 'Error: Book is not currently borrowed?');
             }
         }
         else
@@ -120,6 +150,24 @@ class ReservationsController extends Controller
             // $reservation->book = $reservation->book()->title;
         // }
 
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function borrowedIndex()
+    {
+        
+        $user = Auth::user();
+
+        if($user === null) {
+            return redirect(route('login'));
+        }
+
+        $reservations = Reservation::where('status', 'borrowed')->where('user_id', $user->id)->get();
+        return view('userBorrowed', ['reservations' => $reservations]);
     }
 
     /**

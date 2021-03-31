@@ -46,6 +46,11 @@
                             Contact
                         </a>
                         @endguest
+                        @role('member')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('userBorrowed') }}">Your Books</a>
+                        </li>
+                        @endrole
                         @role('admin')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contacts.index') }}">Messages</a>
