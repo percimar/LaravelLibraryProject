@@ -51,54 +51,45 @@ class ReservationsController extends Controller
         }   
     }
 
-    public function borrow(Book $book) {
+    public function borrow(Reservation $reservation) {
         //is user authenticated?
-        $user = Auth::user();
+        $authUser = Auth::user();
 
-        if(!$user) 
-        {
+        if($authUser === null) {
             return redirect(route('login'));
-        } 
-        else 
-        {
-            if ($book->exists) {
-                //Is the book already reserved by someone else?
-                $reservationsByOthers = DB::Table('reservations')->
-                                where('book_id', "=" ,  $book->id)->
-                                where('user_id','!=',   $user->id)->
-                                where('status',  '=',   'reserved')->
-                                get();
-                
-                //Is the book already borrowed by you?
-                $borrowedByYou = DB::Table('reservations')->
-                                where('book_id', "=" ,  $book->id)->
-                                where('user_id', '=',   $user->id)->
-                                where('status',  '=',   'borrowed')->
-                                get();
-                
-                if(count($reservationsByOthers) === 0 && count($borrowedByYou) === 0)
-                {
-                    $reservations = DB::Table('reservations')->
-                                where('book_id', "=",   $book->id)->
-                                where('user_id', '=',   $user->id)->
-                                where('status',  '=',   'reserved')->
-                                get();
+        }
 
-                    $reservation = Reservation::find($reservations[0]->id);
-                    $reservation->status = "borrowed";
-                    $reservation->save();
-                    return redirect(route('reservations.index'));
-                }
-                else
-                {
-                    return redirect('/');
-                }
+        if($authUser->role !== "admin") {
+            return abort(403);
+        }
+
+        if ($reservation->exists) {
+            $today = today();
+            $book = $reservation->book;
+            $user = $reservation->user;
+
+            //Is the book already borrowed?
+            $isBorrowed = DB::Table('reservations')->
+                            where('book_id', "=" ,  $book->id)->
+                            where('status',  '=',   'borrowed')->
+                            get();
+            
+            if(count($isBorrowed) === 0)
+            {
+                $reservation->status = "borrowed";
+                $reservation->return_date = $today->add(14, 'day');
+                $reservation->save();
+                return redirect(route('reservations.index'));
             }
             else
             {
-                return abort(404);
+                return abort(400);
             }
-        }   
+        }
+        else
+        {
+            return abort(404);
+        }
     }
 
     /**
@@ -108,24 +99,27 @@ class ReservationsController extends Controller
      */
     public function index()
     {
+        
         $user = Auth::user();
 
-        if($user) 
-        {
-
-            $reservations = Reservation::where('user_id', $user->id)->where('status','reserved')->get();
-
-            foreach ($reservations as $reservation) {
-                // dd($reservation->book()->get()[0]->title);
-                // $reservation->book = $reservation->book()->title;
-            }
-
-            return view('reservations', ['reservations' => $reservations]);
-        } 
-        else 
-        {
+        if($user === null) {
             return redirect(route('login'));
         }
+
+        if($user->role !== "admin") {
+            $reservations = Reservation::where('user_id', $user->id)->where('status','reserved')->get();
+            return view('reservations', ['reservations' => $reservations]);
+        }
+
+        $reservations = Reservation::where('status', 'reserved')->get();
+        return view('adminReservations', ['reservations' => $reservations]);
+
+
+        // foreach ($reservations as $reservation) {
+            // dd($reservation->book()->get()[0]->title);
+            // $reservation->book = $reservation->book()->title;
+        // }
+
     }
 
     /**
