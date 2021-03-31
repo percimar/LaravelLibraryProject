@@ -171,6 +171,35 @@ class ReservationsController extends Controller
     }
 
     /**
+     * Display a history of the returned books.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function returnedBooks()
+    {
+        
+        $user = Auth::user();
+
+        if($user === null) {
+            return redirect(route('login'));
+        }
+
+        if($user->role == "admin") {
+            $returns = Reservation::where('status','returned')->get();
+            return view('returnedBooks', ['returns' => $returns]);
+        }
+
+        $returns = Reservation::where('status', 'returned')->where('user_id', $user->id)->get();
+        $returnsWithStatus = $returns->map(function ($r) {
+            $bookHasReservations = Reservation::where('book_id', $r->book->id)->whereIn('status', ['reserved', 'borrowed'])->count() !== 0;
+            $r->isReservable = !$bookHasReservations;
+            return $r;
+        });
+
+        return view('returnedBooks', ['returns' => $returnsWithStatus]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

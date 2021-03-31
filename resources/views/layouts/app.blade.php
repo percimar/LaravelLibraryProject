@@ -50,6 +50,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('userBorrowed') }}">Your Books</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('returnedBooks') }}">Returned History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contacts.index') }}">Messages</a>
+                        </li>
                         @endrole
                         @role('admin')
                         <li class="nav-item">
@@ -64,10 +70,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">Manage Users</a>
                         </li>
-                        @endrole
-                        @role('member')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contacts.index') }}">Messages</a>
+                            <a class="nav-link" href="{{ route('returnedBooks') }}">Returned History</a>
                         </li>
                         @endrole
                     </ul>
