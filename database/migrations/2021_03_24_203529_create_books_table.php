@@ -21,6 +21,7 @@ class CreateBooksTable extends Migration
             $table->unsignedBigInteger("isbn", false);
             $table->text("author");
             $table->text("category");
+            $table->text("image")->default("https://picsum.photos/200/300");
             $table->integer("pages", false, false);
             $table->date("publication");
         });

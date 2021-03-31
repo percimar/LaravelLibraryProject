@@ -24,7 +24,6 @@
                             ${book.title}<br/>
                             ${book.author}<br/>
                             ${book.category}<br/>
-                            ${book.publication}
                         </div>
                         `
                     )
