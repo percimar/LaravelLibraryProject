@@ -34,7 +34,7 @@ class ReservationsController extends Controller
                     $reservation->user_id = $user->id;
                     $reservation->reserve_date = now();
                     $reservation->status = "reserved";
-                    $reservation->return_date = date("y-m-d", strtotime("+30 days", time()));
+                    $reservation->return_date = date("y-m-d", strtotime("+1 days", time()));
                     $reservation->save();
 
                     return redirect(route('reservations.index'));

@@ -16,8 +16,6 @@
                                 @csrf
                                 @method('delete')
                                 <input type="submit" href="#" class="btn btn-danger p-2 d-inline-flex" value="Cancel" />
-                                <a href={{ route('borrow', $reservation->book()->get()[0]->id) }}
-                                    class="btn btn-primary d-inline-flex p-2">Borrow</a>
                             </form>
                         </div>
                     </div>
