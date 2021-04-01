@@ -21,7 +21,7 @@
                             <form method="POST" action={{ route('reservations.destroy', $reservation->id) }}>
                                 @csrf
                                 @method('delete')
-                                <input type="submit" href="#" class="btn btn-danger p-2 d-inline-flex" value="Return Book" />
+                                <input type="submit" href="#" class="btn btn-danger p-2 d-inline-flex" value="Cancel Reservation" />
                             </form>
                         </div>
                     </div>
@@ -29,23 +29,15 @@
             </div>
             <div class="col-lg-6 mr-auto">
                 <h1 class="text-left">Your History</h1>
-                {{-- @foreach ($reservations as $reservation)
+                @foreach ($history as $reservation)
                     <div class="card flex-column" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">{{ $reservation->book->title }}</h5>
                             <p class="card-text">Reserved on: {{ $reservation->reserve_date }}</p>
-                            <p class="card-text">Return on: {{ $reservation->return_date }}</p>
-
-                            <form method="POST" action={{ route('reservations.destroy', $reservation->id) }}>
-                                @csrf
-                                @method('delete')
-                                <input type="submit" href="#" class="btn btn-danger p-2 d-inline-flex" value="Cancel" />
-                                <a href={{ route('borrow', $reservation->book->id) }}
-                                    class="btn btn-primary d-inline-flex p-2">Borrow</a>
-                            </form>
+                                <a href={{ route('reserve', $reservation->book->id) }}
                         </div>
                     </div>
-                @endforeach --}}
+                @endforeach
             </div>
         </div>
     </div>

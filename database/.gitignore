@@ -1,2 +1,4 @@
 *.sqlite
 *.sqlite-journal
+.public/css/app.css
+.public/js/app.js

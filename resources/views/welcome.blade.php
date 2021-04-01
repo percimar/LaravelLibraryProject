@@ -5,13 +5,7 @@
 <div class="grid-container">
   <div class="item2">
     Categories
-    <div>
-      <a href="#">
-        Cat 1
-      </a><br />
-      <a href="#">
-        Cat 2
-      </a>
+    <div id="loadCategories">
     </div>
   </div>
 

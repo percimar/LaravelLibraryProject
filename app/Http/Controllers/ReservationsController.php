@@ -138,7 +138,8 @@ class ReservationsController extends Controller
 
         if($user->role !== "admin") {
             $reservations = Reservation::where('user_id', $user->id)->where('status','reserved')->get();
-            return view('reservations', ['reservations' => $reservations]);
+            $history = Reservation::where('user_id', $user->id)->whereIn('status',['cancelled','expired'])->get();
+            return view('reservations', ['reservations' => $reservations, 'history' => $history]);
         }
 
         $reservations = Reservation::where('status', 'reserved')->get();
@@ -267,7 +268,8 @@ class ReservationsController extends Controller
         {
             if ($reservation->exists && $reservation->status === "reserved")
             {
-                $reservation->delete();
+                $reservation->status = "cancelled";
+                $reservation->save();
                 return redirect(route('reservations.index'));
             }
             else

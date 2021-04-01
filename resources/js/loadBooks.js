@@ -1,3 +1,12 @@
+let categories = [
+    'Fantasy',
+    'Historical Fiction',
+    'Autobiography',
+    'Horror',
+    'Detective Mystery',
+    'Romance',
+    'Thrillers'
+];
 (async () => {
     if (window.location.pathname === "/") {
         let searchField = document.getElementById('searchBooks')
@@ -24,11 +33,15 @@
                         <tr>
                             <td>
                                 <div>
+                                <a href = "/books/${book.id}">
                                     <img src="${book.image}" id="bookCover">
+                                    </a>
                                 </div>
                             </td>
                             <td>
-                                ${book.title}
+                                <a href = "/books/${book.id}">
+                                    ${book.title}
+                                </a>
                             </td>
                             <td>
                                 ${book.author}
@@ -44,6 +57,21 @@
                     )
                 }
             })
+
+
+            let loadCat = $('#loadCategories');
+            loadCat.text('')
+
+            categories.map(category => {
+                loadCat.append(
+                    `
+                <a href="#">
+                    ${category}
+                </a><br />
+                    `
+                )
+            }
+            )
         }
         await send({ target: { value: "" } })
     }
