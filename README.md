@@ -10,6 +10,12 @@ First, make a local copy of the repo
 git checkout https://github.com/percimar/LaravelLibraryProject.git
 ```
 
+Second, make sure you have npm installed
+
+```
+npm i
+```
+
 Then install vendor modules
 
 ```
@@ -21,6 +27,7 @@ Remember to configure your MySQL Connection in the .env file, then run migration
 ```
 php artisan migrate:fresh
 ```
+
 generate app key before you serve
 
 ```
@@ -31,6 +38,12 @@ Now you can run it
 
 ```
 php artisan serve
+```
+
+To update styling:
+
+```
+npm run dev
 ```
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
