@@ -2,7 +2,7 @@
     if (window.location.pathname === "/") {
         let searchField = document.getElementById('searchBooks')
         let listener = searchField.addEventListener('keydown', send)
-        
+
         async function send(event) {
 
             let books = await $.get('/books', {
@@ -13,24 +13,39 @@
                 }
             })
 
-            let loadDiv = $('#loadBooks')
-            loadDiv.text('')
+            let loadTable = $('#loadBooks')
+            loadTable.text('')
+
             books.map(book => {
                 if (book.title.indexOf(event.target.value) !== -1) {
                     // Book CSS under append
-                    loadDiv.append(
+                    loadTable.append(
                         `
-                        <div class="grid-item">
-                            ${book.title}<br/>
-                            ${book.author}<br/>
-                            ${book.category}<br/>
-                        </div>
+                        <tr>
+                            <td>
+                                <div>
+                                    <img src="${book.image}" id="bookCover">
+                                </div>
+                            </td>
+                            <td>
+                                ${book.title}
+                            </td>
+                            <td>
+                                ${book.author}
+                            </td>
+                            <td>
+                                ${book.category}
+                            </td>
+                            <td>
+                                 <a class="btn btn-primary" href="/books/${book.id}/reserve">Reserve</a>
+                            </td>
+                        </tr>
                         `
                     )
                 }
             })
         }
-        await send({target: {value:""}})
+        await send({ target: { value: "" } })
     }
 })()
 
