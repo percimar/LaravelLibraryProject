@@ -21,7 +21,7 @@
                             <form method="POST" action={{ route('reservations.destroy', $reservation->id) }}>
                                 @csrf
                                 @method('delete')
-                                <input type="submit" href="#" class="btn btn-danger p-2 d-inline-flex" value="Cancel" />
+                                <input type="submit" href="#" class="btn btn-danger p-2 d-inline-flex" value="Return Book" />
                             </form>
                         </div>
                     </div>
