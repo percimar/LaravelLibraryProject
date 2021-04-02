@@ -68,7 +68,7 @@ class ContactsController extends Controller
         $contact->subject = request('subject');
         $contact->message = request('message');
         $contact->save();
-        return redirect('/')->with('alert', 'Your message has been sent!');
+        return redirect('/')->with('success', 'Your message has been sent!');
     }
 
     /**

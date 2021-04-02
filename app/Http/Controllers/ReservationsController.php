@@ -41,7 +41,7 @@ class ReservationsController extends Controller
                 }
                 else
                 {
-                    return redirect(route('reservations.index'))->with('alert', 'Error: Book is currently reserved or borrowed!');
+                    return redirect(route('reservations.index'))->with('error', 'Error: Book is currently reserved or borrowed!');
                 }
             }
             else
@@ -117,7 +117,7 @@ class ReservationsController extends Controller
             }
             else
             {
-                return redirect(route('reservations.index'))->with('alert', 'Error: Book is not currently borrowed?');
+                return redirect(route('reservations.index'))->with('error', 'Error: Book is not currently borrowed?');
             }
         }
         else
