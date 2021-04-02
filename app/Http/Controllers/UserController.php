@@ -106,7 +106,7 @@ class UserController extends Controller
 
         $user->role = request('role');
         $user->save();
-        return redirect(route('users.index'))->with('alert', "User's role has been changed!");
+        return redirect(route('users.index'))->with('success', "User's role has been changed!");
     }
 
     /**

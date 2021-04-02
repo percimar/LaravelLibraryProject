@@ -28,9 +28,9 @@
             <div class="container">
 
 
-                <a class="center text-decoration-none" href="{{ url('/') }}">
+                <a class="text-decoration-none" href="{{ url('/') }}">
                     <img src="{{ asset('img/labiblio-logo.png') }}" height="50" width="30" />
-                    <img src="{{ asset('img/labiblio.png') }}" />
+                    <img src="{{ asset('img/labiblio.png') }}" height="60" width="200" />
                     <img src="{{ asset('img/labiblio-logo.png') }}" height="50" width="30" />
                 </a>
 
@@ -57,6 +57,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contacts.index') }}">Messages</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('request.create') }}">Request a Book</a>
+                        </li>
                         @endrole
                         @role('admin')
                         <li class="nav-item">
@@ -73,6 +76,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('returnedBooks') }}">Returned History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('request.index') }}">Requested Books</a>
                         </li>
                         @endrole
                     </ul>
@@ -125,6 +131,8 @@
         </nav>
 
         <main class="py-4">
+            @include('layouts.alerts')
+
             @yield('content')
         </main>
     </div>
