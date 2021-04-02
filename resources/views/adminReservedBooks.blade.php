@@ -2,22 +2,18 @@
 
 @section('content')
 <div class="col-lg-8 m-auto">
-    <h1>Returned Books</h1>
-    @if(null !== session('alert'))
-    <br />
-    <div class="alert alert-primary " role="alert">
-        {{session('alert') ?? '' }}
-    </div>
-    @endif
+    <h1>Reservation History</h1>
     <br />
     <table class="table ">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Book ISBN</th>
                 <th scope="col">Book Title</th>
-                <th scope="col">Book Author</th>
+                <th scope="col">Reserve Date</th>
+                <th scope="col">Expired Date</th>
+                <th scope="col">Borrow Date</th>
                 <th scope="col">Returned Date</th>
-                <th scope="col">Reservable?</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -25,13 +21,20 @@
                 <tr>
                         <td>{{$r->book->isbn}}</td> 
                         <td>{{$r->book->title}}</td>
-                        <td>{{$r->book->author}}</td>
+                        <td>{{$r->reserve_date}}</td>
+                        @if($r->status == "expired")
                         <td>{{$r->due_date}}</td>
-                        @if($r->isReservable)
-                            <td><a href={{route('reserve', $r->book->id)}} class="btn btn-primary">Reserve</a></td>
                         @else
-                            <td>Not available</td>
+                        <td></td>
                         @endif
+                        @if(isset($r->borrow_date))
+                        <td>{{$r->borrow_date}}</td>
+                        <td>{{$r->due_date}}</td>
+                        @else
+                        <td></td>
+                        <td></td>
+                        @endif
+                        <td>{{$r->status}}</td>
                 </tr>
             @endforeach
         </tbody>

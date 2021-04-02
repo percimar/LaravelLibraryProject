@@ -18,7 +18,8 @@ class CreateReservationsTable extends Migration
             $table->unsignedBigInteger("book_id", false);
             $table->unsignedBigInteger("user_id", false);
             $table->date("reserve_date");
-            $table->date("return_date");
+            $table->date("borrow_date")->nullable();
+            $table->date("due_date");
             $table->string('status')->default('available');
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

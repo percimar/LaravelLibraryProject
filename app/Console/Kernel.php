@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         
         $schedule->call(function () {
-            DB::table('reservations')->whereDate('return_date', '<', now())->update(['status' => 'expired']);
+            DB::table('reservations')->where('status','reserved')->whereDate('due_date', '<', now())->update(['status' => 'expired']);
         })->everyMinute();
     }
 

@@ -34,7 +34,7 @@ class ReservationsController extends Controller
                     $reservation->user_id = $user->id;
                     $reservation->reserve_date = now();
                     $reservation->status = "reserved";
-                    $reservation->return_date = date("y-m-d", strtotime("+1 days", time()));
+                    $reservation->due_date = date("y-m-d", strtotime("+1 days", time()));
                     $reservation->save();
 
                     return redirect(route('reservations.index'));
@@ -76,8 +76,8 @@ class ReservationsController extends Controller
             if(count($isBorrowed) === 0)
             {
                 $reservation->status = "borrowed";
-                $reservation->reserve_date = today();
-                $reservation->return_date = today()->add(14, 'day');
+                $reservation->borrow_date = today();
+                $reservation->due_date = today()->add(14, 'day');
                 $reservation->save();
                 return redirect(route('reservations.index'));
             }
@@ -100,6 +100,10 @@ class ReservationsController extends Controller
             return redirect(route('login'));
         }
 
+        if($authUser->role !== "admin") {
+            return abort(403);
+        }
+
         if ($reservation->exists) {
             $book = $reservation->book;
             $user = $reservation->user;
@@ -107,13 +111,13 @@ class ReservationsController extends Controller
             if($reservation->status === "borrowed")
             {
                 $reservation->status = "returned";
-                $reservation->return_date = today();
+                $reservation->due_date = today();
                 $reservation->save();
-                return redirect(route('userBorrowed'));
+                return redirect(route('reservations.index'));
             }
             else
             {
-                return redirect(route('userBorrowed'))->with('alert', 'Error: Book is not currently borrowed?');
+                return redirect(route('reservations.index'))->with('alert', 'Error: Book is not currently borrowed?');
             }
         }
         else
@@ -142,7 +146,7 @@ class ReservationsController extends Controller
             return view('reservations', ['reservations' => $reservations, 'history' => $history]);
         }
 
-        $reservations = Reservation::where('status', 'reserved')->get();
+        $reservations = Reservation::whereIn('status', ['reserved','borrowed'])->get();
         return view('adminReservations', ['reservations' => $reservations]);
 
 
@@ -186,8 +190,8 @@ class ReservationsController extends Controller
         }
 
         if($user->role == "admin") {
-            $returns = Reservation::where('status','returned')->get();
-            return view('returnedBooks', ['returns' => $returns]);
+            $returns = Reservation::whereIn('status',['returned','expired','cancelled'])->get();
+            return view('adminReservedBooks', ['returns' => $returns]);
         }
 
         $returns = Reservation::where('status', 'returned')->where('user_id', $user->id)->get();

@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $reservation->book->title }}</h5>
                             <p class="card-text">Reserved on: {{ $reservation->reserve_date }}</p>
-                            <p class="card-text">Return on: {{ $reservation->return_date }}</p>
+                            <p class="card-text">Borrow before: {{ $reservation->due_date }}</p>
 
                             <form method="POST" action={{ route('reservations.destroy', $reservation->id) }}>
                                 @csrf

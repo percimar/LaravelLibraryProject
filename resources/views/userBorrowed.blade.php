@@ -25,9 +25,9 @@
                 <tr>
                         <td>{{$r->book->isbn}}</td> 
                         <td>{{$r->book->title}}</td>
-                        <td>{{$r->reserve_date}}</td>
-                        <td>{{$r->return_date}}</td>
-                        <td><a class="btn btn-primary" href={{ route('return', $r->id) }}>Return</a></td>
+                        <td>{{$r->borrow_date}}</td>
+                        <td>{{$r->due_date}}</td>
+                        <td><a class="btn btn-primary" href={{ route('books.show', $r->book->id) }}>View Details</a></td>
                 </tr>
             @endforeach
         </tbody>
