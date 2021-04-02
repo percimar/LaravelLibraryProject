@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -11,36 +12,21 @@ use Illuminate\Support\Facades\Auth;
 class BooksController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $books = Book::all();
-        // $disbooks = Book::get();
         return $books;
-        // return view('welcome', [
-        //     'books' => $books,
-        //     'disbooks' => $disbooks
-        // ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $user = Auth::user();
 
-        if($user === null) {
+        if ($user === null) {
             return redirect(route('login'));
         }
 
-        if($user->role !== "admin") {
+        if ($user->role !== "admin") {
             return abort(403);
         }
 
@@ -55,25 +41,41 @@ class BooksController extends Controller
         ];
         return view("bookForm", ['categories' => $categories]);
     }
+    public function createBookFromRequest($title, $author)
+    {
+        $user = Auth::user();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+        if ($user === null) {
+            return redirect(route('login'));
+        }
+
+        if ($user->role !== "admin") {
+            return abort(403);
+        }
+        $categories = [
+            'Fantasy',
+            'Historical Fiction',
+            'Autobiography',
+            'Horror',
+            'Detective Mystery',
+            'Romance',
+            'Thrillers'
+        ];
+        return view("AdminReqBookForm", ['categories' => $categories, 'title' => $title, 'author' => $author]);
+    }
+
     public function store(Request $request)
     {
         $user = Auth::user();
 
-        if($user === null) {
+        if ($user === null) {
             return redirect(route('login'));
         }
 
-        if($user->role !== "admin") {
+        if ($user->role !== "admin") {
             return abort(403);
         }
-        
+
         request()->validate([
             'title' => 'required',
             'isbn' => 'required',
@@ -83,51 +85,41 @@ class BooksController extends Controller
             'publication' => 'required',
         ]);
 
+        $bookExistsinReq = DB::Table('request_books')->where('title', $request->title)->count();
+        if ($bookExistsinReq > 0) {
+            $res = DB::Table('request_books')->where('title', $request->title)->delete();
+        }
+        $bookTitleExists = DB::Table('book')->where('title', $request->title)->count();
+        $bookISBNExists = DB::Table('book')->where('isbn', $request->isbn)->count();
+        if ($bookTitleExists > 0 || $bookISBNExists > 0) {
+            return redirect('/')->with('error', 'We have this book already, search and you will find it ;) !');
+        }
+
         $book = Book::create($request->all());
         $book->save();
-        return redirect(route('/'));
+
+
+
+        return redirect('/');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Book $book)
     {
         return view('bookDetails', ['book' => $book]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Book $book)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Book $book)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Book $book)
     {
         //
