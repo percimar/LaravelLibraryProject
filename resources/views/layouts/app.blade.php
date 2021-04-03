@@ -60,6 +60,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('request.create') }}">Request a Book</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist</a>
+                        </li>
                         @endrole
                         @role('admin')
                         <li class="nav-item">

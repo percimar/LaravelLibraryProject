@@ -28,12 +28,12 @@ class WishlistController extends Controller
 
         else if ($user->role === "member"){
 
-        $wishlist = Reservation::all();
-        $returnsWithStatus = $wishlist->map(function ($r) {
-            $bookHasReservations = Reservation::where('book_id', $r->book->id)->whereIn('status', ['reserved', 'borrowed'])->count() !== 0;
-            $r->isReservable = !$bookHasReservations;
-            return $r;
-        });
+        // $wishlist = Reservation::all();
+        // $returnsWithStatus = $wishlist->map(function ($r) {
+        //     $bookHasReservations = Reservation::where('book_id', $r->book->id)->whereIn('status', ['reserved', 'borrowed'])->count() !== 0;
+        //     $r->isReservable = !$bookHasReservations;
+        //     return $r;
+        // });
         
         // $wishlist->status = $book->reservations->whereIn('status',['reserved','borrowed'])->count() == 0;
 
@@ -41,7 +41,6 @@ class WishlistController extends Controller
                 'wishlist' => $wishlist,
                 'books' => $books,
                 'reservations' => $reservations,
-                'returnsWithStatus' => $returnsWithStatus,
                 'user' => $user
             ]);
         }
