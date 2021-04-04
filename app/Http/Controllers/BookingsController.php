@@ -22,12 +22,12 @@ class BookingsController extends Controller
             return redirect(route('login'));
         }
 
-        if($user->role !== "admin") {
-            $bookings = Booking::all();
+        if($user->role == "admin") {
+            $bookings = Booking::where('timeslot', '>', now()->subHour())->orderBy('timeslot')->get();
             return view('adminBookings', ['bookings' => $bookings]);
         }
 
-        $bookings = Booking::where('user_id', $user->id)->get();
+        $bookings = Booking::where('user_id', $user->id)->where('timeslot', '>', now()->subHour())->orderBy('timeslot')->get();
         return view('userBookings', ['bookings' => $bookings]);
 
     }
@@ -102,5 +102,23 @@ class BookingsController extends Controller
     public function destroy(Booking $booking)
     {
         //
+    }
+
+    public function approve(Booking $booking)
+    {
+        $user = Auth::user();
+
+        if ($user === null) {
+            return redirect(route('login'));
+        }
+
+        if ($user->role !== "admin") {
+            return abort(403);
+        }
+
+        $booking->approved_date = now();
+        $booking->save();
+
+        return redirect(route("bookings.index"));
     }
 }

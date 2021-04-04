@@ -34,4 +34,6 @@ Route::get('/reservations/{reservation}/return', [ReservationsController::class,
 Route::get('/borrowed', [ReservationsController::class, 'borrowedIndex'])->name('userBorrowed');
 Route::get('/returned', [ReservationsController::class, 'returnedBooks'])->name('returnedBooks');
 Route::get('/request/create/{title}/{author}', [BooksController::class, 'createBookFromRequest'])->name('books.createBookFromRequest');
+Route::post('/rooms/{room}/book', [RoomsController::class, 'bookRoom'])->name('rooms.bookRoom');
+Route::get('/bookings/{booking}/approve', [BookingsController::class, 'approve'])->name('bookings.approve');
 // Route::get('/request/create/{title}/{author}', ['as' => 'books.createBookFromRequest', 'uses' => 'BooksController@createBookFromRequest']);

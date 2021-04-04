@@ -110,7 +110,13 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                 <a class="dropdown-item" href="{{ route('reservations.index') }}">
-                                    Reservations
+                                    Book Reservations
+                                </a>
+                                <a class="dropdown-item" href="{{ route('rooms.index') }}">
+                                    Book a Room
+                                </a>
+                                <a class="dropdown-item" href="{{ route('bookings.index') }}">
+                                    Your Bookings
                                 </a>
                                 <a class="dropdown-item" href="{{ route('contacts.create') }}">
                                     Contact
