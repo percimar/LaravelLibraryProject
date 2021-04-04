@@ -17,10 +17,7 @@
                             <br />
                             {{ $room->description }}
                             </p>
-                            <form method="POST" action={{ route('rooms.store', $room->id) }}>
-                                @csrf
-                                <input type="submit" href="#" class="btn btn-primary p-2 d-inline-flex" value="Reserve Room" />
-                            </form>
+                            <a href="{{ route('rooms.show', $room->id) }}" class="btn btn-primary p-2 d-inline-flex"> Reserve Room</a>
                         </div>
                     </div>
                 @endforeach

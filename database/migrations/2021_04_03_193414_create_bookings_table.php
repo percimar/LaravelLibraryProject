@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use Database\Factories\BookingFactory;
+
 class CreateBookingsTable extends Migration
 {
     /**
@@ -21,6 +23,9 @@ class CreateBookingsTable extends Migration
             $table->foreignId('room_id')->constrained();
             $table->foreignId('user_id')->constrained();
         });
+
+        $factory = new BookingFactory;
+        $factory->count(30)->create();
     }
 
     /**
