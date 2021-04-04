@@ -6,6 +6,8 @@ use App\Http\Controllers\ReservationsController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\RequestBookController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BookingsController;
+use App\Http\Controllers\RoomsController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -20,6 +22,8 @@ Route::resource('books',BooksController::class);
 Route::resource('reservations',ReservationsController::class);
 Route::resource('users', UserController::class);
 Route::resource('request', RequestBookController::class);
+Route::resource('bookings', BookingsController::class);
+Route::resource('rooms', RoomsController::class);
 
 Route::get('/books/{book}/reserve', [ReservationsController::class, 'reserve'])->name('reserve');
 Route::get('/reservations/{reservation}/borrow', [ReservationsController::class, 'borrow'])->name('borrow');

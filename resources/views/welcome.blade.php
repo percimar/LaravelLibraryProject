@@ -28,7 +28,14 @@
       </tbody>
     </table>
 
-    <!-- <div class="item4">Right</div> -->
     <!-- <div class="item5">Footer</div> -->
   </div>
+  <div class="item4">
+  Did you know? La Biblioteca offers study rooms free of cost! 
+  They are perfect if you need a quiet, distraction free place to work or study. 
+  All you need to do is book it in advance. 
+  <a class="btn btn-primary" href={{route('rooms.index')}}>Reserve Now</a>
+  </div>
+</div>
+
   @endsection
