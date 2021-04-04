@@ -1,6 +1,7 @@
-
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @import url(//db.onlinewebfonts.com/c/86aec59525d1d04b53f54ad95ff3f6bf?family=Hold);
+
 .item2 {
     grid-area: menu;
     grid-column: span 1;
@@ -11,6 +12,7 @@
 }
 .item4 {
     grid-column: right;
+    width: 300px;
 }
 .item5 {
     grid-area: footer;
@@ -32,7 +34,10 @@ tr td {
 }
 .grid-container {
     display: grid;
-    grid-template-areas: "menu main ";
+    grid-template-areas:
+    "menu main right"
+    "null main empty"
+    "null main empty";
     grid-gap: 10px;
     grid-template-columns: 200px 2fr;
     padding: 10px;
@@ -82,7 +87,7 @@ tr td {
             rgba(251, 211, 101) 1%,
             rgba(255, 255, 255, 0.7)
         ),
-        url("../img/labiblio-banner.png");
+        url(/images/labiblio-banner.png?9a1ceeaa4c879161860ae5354d16b9cb);
 
     /* opacity: 0.6;
     position: absolute; */
