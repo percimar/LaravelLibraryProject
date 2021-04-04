@@ -9,6 +9,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookingsController;
 use App\Http\Controllers\RoomsController;
+use App\Http\Controllers\ReviewsController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -26,6 +27,7 @@ Route::resource('request', RequestBookController::class);
 Route::resource('bookings', BookingsController::class);
 Route::resource('rooms', RoomsController::class);
 Route::resource('wishlist', WishlistController::class);
+Route::resource('reviews', ReviewsController::class);
 
 Route::get('/books/{book}/reserve', [ReservationsController::class, 'reserve'])->name('reserve');
 Route::get('/books/{book}/addToWishlist', [WishlistController::class, 'addToWishlist'])->name('addToWishlist');
@@ -34,4 +36,6 @@ Route::get('/reservations/{reservation}/return', [ReservationsController::class,
 Route::get('/borrowed', [ReservationsController::class, 'borrowedIndex'])->name('userBorrowed');
 Route::get('/returned', [ReservationsController::class, 'returnedBooks'])->name('returnedBooks');
 Route::get('/request/create/{title}/{author}', [BooksController::class, 'createBookFromRequest'])->name('books.createBookFromRequest');
+Route::get('/books/{book}/review', [ReviewsController::class, 'store']);
+
 // Route::get('/request/create/{title}/{author}', ['as' => 'books.createBookFromRequest', 'uses' => 'BooksController@createBookFromRequest']);

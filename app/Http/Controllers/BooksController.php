@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
-
 
 class BooksController extends Controller
 {
-
     public function index()
     {
         $books = Book::all();
@@ -52,6 +52,7 @@ class BooksController extends Controller
         if ($user->role !== "admin") {
             return abort(403);
         }
+
         $categories = [
             'Fantasy',
             'Historical Fiction',
@@ -98,15 +99,45 @@ class BooksController extends Controller
         $book = Book::create($request->all());
         $book->save();
 
-
-
         return redirect('/');
     }
 
 
     public function show(Book $book)
     {
-        return view('bookDetails', ['book' => $book]);
+        $user = Auth::user();
+
+        // Find if the book is borrowed or returned by the authenticated user
+        // To check if the user is allowed to leave a review or not
+        $reviewable = false;
+        if ($user) {
+            $borrowed = Reservation::where("book_id", $book->id)
+            ->where("user_id", $user->id)
+            ->where("status", "borrowed")
+            ->get();
+            $returned = Reservation::where("book_id", $book->id)
+            ->where("user_id", $user->id)
+            ->where("status", "returned")
+            ->get();
+            if (count($borrowed) > 0 || count($returned) > 0) {
+                $reviewable = true;
+            }
+        }
+
+        $reviews = Review::where("book_id", $book->id)->get();
+
+        // Add the user name to each review
+        foreach ($reviews as $review) {
+            $from = User::find($review->user_id);
+            $review->from = $from->name;
+        }
+
+        return view('bookDetails', [
+        'book' => $book,
+        'user' => $user->id,
+        'reviews' => $reviews,
+        'isreviewallowed' => $reviewable,
+        ]);
     }
 
     public function edit(Book $book)
