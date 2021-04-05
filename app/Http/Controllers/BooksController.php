@@ -89,17 +89,13 @@ class BooksController extends Controller
         if ($bookExistsinReq > 0) {
             $res = DB::Table('request_books')->where('title', $request->title)->delete();
         }
-        $bookTitleExists = DB::Table('book')->where('title', $request->title)->count();
-        $bookISBNExists = DB::Table('book')->where('isbn', $request->isbn)->count();
+        $bookTitleExists = DB::Table('books')->where('title', $request->title)->count();
+        $bookISBNExists = DB::Table('books')->where('isbn', $request->isbn)->count();
         if ($bookTitleExists > 0 || $bookISBNExists > 0) {
             return redirect('/')->with('error', 'We have this book already, search and you will find it ;) !');
         }
-
         $book = Book::create($request->all());
         $book->save();
-
-
-
         return redirect('/');
     }
 

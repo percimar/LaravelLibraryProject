@@ -1,5 +1,8 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
 @import url(//db.onlinewebfonts.com/c/86aec59525d1d04b53f54ad95ff3f6bf?family=Hold);
+.test{
+    display: inline-flex;
+    padding: 10%;
+}
 .item2 {
     grid-area: menu;
     grid-column: span 1;
@@ -130,7 +133,6 @@ input {
     color: rgb(78, 55, 34);
 }
 
-@charset "UTF-8";
 @font-face {
     font-family: "Hold";
     src: url("//db.onlinewebfonts.com/t/86aec59525d1d04b53f54ad95ff3f6bf.eot");
@@ -173,7 +175,7 @@ input {
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
-    --font-family-sans-serif: "Nunito", sans-serif;
+    --font-family-sans-serif:  sans-serif;
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
 }
@@ -1901,7 +1903,6 @@ pre code {
 .table td {
     padding: 0.75rem;
     vertical-align: top;
-    border-top: 1px solid #dee2e6;
 }
 .table thead th {
     vertical-align: bottom;
@@ -6101,7 +6102,7 @@ a.close.disabled {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: "Nunito", sans-serif;
+    font-family:  sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.6;
@@ -6215,7 +6216,7 @@ a.close.disabled {
     z-index: 1060;
     display: block;
     max-width: 276px;
-    font-family: "Nunito", sans-serif;
+    font-family: sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.6;
