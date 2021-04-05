@@ -49,10 +49,8 @@ let categories = [
                             <td>
                                 ${book.category}
                             </td>
-                            <td>
+                            <td style="padding: inherit">
                                  <a class="btn btn-primary" href="/books/${book.id}/reserve">Reserve</a>
-                            </td>
-                            <td>
                                  <a class="btn btn-primary" href="/books/${book.id}/addToWishlist">Add to Wishlist</a>
                             </td>
                         </tr>
