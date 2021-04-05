@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="text-center m-3">
+  <input class="searchInput shadow" id="searchBooks" placeholder="Type to Search..." />
+</div>
 
 <div class="grid-container">
   <!-- <div class="item2">
@@ -10,7 +13,6 @@
   </div> -->
 
   <div class="item3">
-    <input class="searchInput" id="searchBooks" placeholder="Type to Search..." />
 
     <table class="w-100 center">
       <thead>
@@ -24,12 +26,9 @@
         </tr>
       </thead>
       <tbody id="loadBooks">
-        <tr>
-        </tr>
       </tbody>
     </table>
 
-    <!-- <div class="item5">Footer</div> -->
   </div>
   <div class="item4 pr-4 pl-4">
     Did you know? La Biblioteca offers study rooms free of cost!

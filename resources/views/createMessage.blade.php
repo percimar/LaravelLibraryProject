@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container w-50 mw-30">
     <h1>Send a Message</h1>
     <p>Please fill the form below</p>
-    <form class="col-lg-8" method="POST" action="{{route('contacts.store')}}">
+    <form class="col-lg-12" method="POST" action="{{route('contacts.store')}}">
         @csrf
         <div class="form-group">
             @if($user)
-                <p type="text" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email" >{{$user->email}}</p>
-                <input type="hidden" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email" value="{{$user->email}}" >
+            <p type="text" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email">{{$user->email}}</p>
+            <input type="hidden" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email" value="{{$user->email}}">
             @else
-                <input type="text" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email" value="{{old('email')}}">
+            <input type="text" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email" value="{{old('email')}}">
             @endif
             @error('email')
             <p class="alert text-danger">You must enter a email</p>

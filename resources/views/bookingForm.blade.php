@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container w-50 mw-30">
     <h1>Book a Study Room</h1>
     <p>Please fill the form below</p>
-    <form class="col-lg-8" method="POST" action="{{route('bookings.store')}}">
+    <form class="col-lg-12" method="POST" action="{{route('bookings.store')}}">
         @csrf
         <div class="form-group">
             <label for="title">Title</label>

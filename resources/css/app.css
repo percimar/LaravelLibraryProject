@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 @import url(//db.onlinewebfonts.com/c/86aec59525d1d04b53f54ad95ff3f6bf?family=Hold);
 .item2 {
     grid-area: menu;
@@ -32,9 +33,9 @@ tr td {
 .grid-container {
     display: grid;
     grid-template-areas:
-    "null main right"
-    "null main empty"
-    "null main empty";
+        "null main right"
+        "null main empty"
+        "null main empty";
     grid-gap: 10px;
 }
 
@@ -44,6 +45,13 @@ tr td {
     padding: 20px 0;
     font-size: 18px;
     border-radius: 15px;
+}
+.centertopnav {
+    float: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .footer {
     overflow: hidden;
@@ -99,19 +107,20 @@ tr td {
 
 .searchInput {
     color: rgb(0, 0, 0);
-    border-radius: 0.25rem;
+    border-radius: 10px;
     background-color: rgba(0, 0, 0, 0);
-    border-width: 0 0 0;
+    border-width: 1px;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
+    width: 30%;
 }
 
 .searchInput:focus {
     color: rgb(0, 0, 0);
-    border-radius: 0.25rem;
-    background-color: rgba(0, 0, 0, 0);
-    border-width: 0 0 0;
-    border-color: rgb(255, 0, 0);
+    /* border-radius: 10px; */
+    background-color: rgba(143, 143, 143, 0);
+    /* border-width: 0 0 0; */
+    /* border-color: rgb(255, 0, 0); */
     text-align: center;
 }
 input {
@@ -304,10 +313,10 @@ sup {
 a {
     color: #573617;
     background-color: transparent;
+    text-decoration: none;
 }
 a:hover {
     color: #a7541d;
-    text-decoration: underline;
 }
 
 a:not([href]):not([class]) {
@@ -3923,7 +3932,8 @@ input[type="button"].btn-block {
     background-color: #3490dc;
 }
 .custom-control-input:focus ~ .custom-control-label::before {
-    box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0);
+    border-color: red;
 }
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
     border-color: #a1cbef;
@@ -8018,7 +8028,9 @@ button.bg-dark:focus {
 .mw-100 {
     max-width: 100% !important;
 }
-
+.mw-30 {
+    max-width: 30% !important;
+}
 .mh-100 {
     max-height: 100% !important;
 }

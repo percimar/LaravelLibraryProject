@@ -26,8 +26,6 @@
         <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container ">
 
-
-
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -81,7 +79,7 @@
                         @endrole
                     </ul>
 
-                    <ul>
+                    <ul class="centertopnav">
                         <a class="text-decoration-none" href="{{ url('/') }}">
                             <img src="{{ asset('img/labiblio-logo.png') }}" height="50" width="30" style="transform: scaleX(-1);" />
                             <img src="{{ asset('img/labiblio.png') }}" height="60" width="200" />
@@ -107,11 +105,21 @@
                         @endif
                         @else
                         @role('member')
+
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('userBorrowed') }}">My Books</a>
+                            <a class="nav-link" href="{{ route('reservations.index') }}">
+                                My Reservations
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist</a>
+                            <a class="nav-link" href="{{ route('userBorrowed') }}">
+                                My Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('bookings.index') }}">
+                                My Room Bookings
+                            </a>
+
                         </li>
                         @endrole
                         <li class="nav-item dropdown">
@@ -123,16 +131,16 @@
 
                                 @role('member')
                                 <a class="dropdown-item" href="{{ route('contacts.index') }}">
-                                    My Messages
+                                    Messages
                                 </a>
-                                <a class="dropdown-item" href="{{ route('bookings.index') }}">
-                                    My Bookings
+                                <a class="nav-link" href="{{ route('wishlist.index') }}">
+                                    Wishlist
                                 </a>
                                 <a class="dropdown-item" href="{{ route('returnedBooks') }}">
-                                    Returned History
+                                    Books History
                                 </a>
                                 <a class="dropdown-item" href="{{ route('contacts.create') }}">
-                                    Contact
+                                    Contact Us
                                 </a>
                                 @endrole
 
@@ -140,10 +148,6 @@
                                 <a class="dropdown-item" href="{{ route('contacts.index') }}">
                                     Messages
                                 </a>
-
-
-
-
 
                                 <a class="dropdown-item" href="{{ route('users.index') }}">
                                     Manage Users
