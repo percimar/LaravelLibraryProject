@@ -30,10 +30,10 @@
                 @endforeach
             </select>
             @error('timeslot')
-                <p class="alert text-danger">You must choose a timesot</p>
+                <p class="alert text-danger">You must choose a timeset</p>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Book</button>
     </form>
 </div>
 @endsection

@@ -29,7 +29,7 @@
             <p class="alert text-danger">You must have a message</p>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Send</button>
     </form>
 </div>
 @endsection

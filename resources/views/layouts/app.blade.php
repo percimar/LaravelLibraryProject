@@ -105,7 +105,6 @@
                         @endif
                         @else
                         @role('member')
-
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('reservations.index') }}">
                                 My Reservations
@@ -119,9 +118,16 @@
                             <a class="nav-link" href="{{ route('bookings.index') }}">
                                 My Room Bookings
                             </a>
-
                         </li>
                         @endrole
+                        @role('admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('bookings.index') }}">
+                                Room Bookings
+                            </a>
+                        </li>
+                        @endrole
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}

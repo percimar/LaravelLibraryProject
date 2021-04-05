@@ -59,7 +59,7 @@
             <p class="alert text-danger">You must enter a valid publication date.</p>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Book</button>
     </form>
 </div>
 @endsection
